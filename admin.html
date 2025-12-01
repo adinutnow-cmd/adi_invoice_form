@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — Submitted Invoices</title>
+
+<style>
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+}
+.invoice-image {
+    width: 120px;
+}
+.status-pending {
+    color: orange;
+}
+.status-approved {
+    color: green;
+}
+.status-rejected {
+    color: red;
+}
+</style>
+
+</head>
+<body>
+
+<h2>Admin — Submitted Invoices</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Created At</th>
+            <th>Full Name</th>
+            <th>Phone</th>
+            <th>Invoice ID</th>
+            <th>Image</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody id="invoiceTable"></tbody>
+</table>
+
+<script src="https://esm.sh/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
