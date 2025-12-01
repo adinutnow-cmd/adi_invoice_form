@@ -30,7 +30,21 @@ if (form) {
       setSubmitting(true);
       showStatus("Uploading invoice, please wait…", "info");
 
-      // ---------- Upload image to Supabase Storage ----------
+      // ---------- 1) تأكد أن رقم الفاتورة غير مكرر ----------
+      const { data: existing, error: existingError } = await supabaseClient
+        .from("invoices")
+        .select("id")
+        .eq("invoice_id", invoice_id)
+        .maybeSingle();
+
+      if (existing) {
+        // موجود قبل
+        showStatus("⚠ رقم الفاتورة موجود مسبقاً. الرجاء التأكد من الرقم.", "error");
+        setSubmitting(false);
+        return;
+      }
+
+      // ---------- 2) Upload image to Supabase Storage ----------
       const fileName = `${Date.now()}_${imageFile.name}`;
       const { data: uploadData, error: uploadError } = await supabaseClient.storage
         .from("invoice-images")
@@ -56,7 +70,7 @@ if (form) {
         return;
       }
 
-      // ---------- Insert row into invoices ----------
+      // ---------- 3) Insert row into invoices ----------
       const createdAt = new Date().toISOString();
 
       const { error: insertError } = await supabaseClient
