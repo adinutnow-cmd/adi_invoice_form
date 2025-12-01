@@ -51,13 +51,13 @@ if (form) {
             return alert("Database error: " + error.message);
         }
 
-        document.getElementById("result").innerText =  
+        document.getElementById("result").innerText =
             "Invoice Submitted Successfully!";
         form.reset();
     });
 }
 
-// ------------------ ADMIN TABLE LOAD ------------------
+// ------------------ ADMIN TABLE ------------------
 async function loadAdminTable() {
     const table = document.getElementById("invoiceTable");
     if (!table) return;
