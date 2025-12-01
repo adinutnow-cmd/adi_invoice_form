@@ -39,7 +39,14 @@
 
         <div class="form-group">
           <label for="image">Invoice Image <span>*</span></label>
-          <input type="file" id="image" accept="image/*" required />
+          <input
+  type="file"
+  id="image"
+  accept="image/*"
+  capture="environment"
+  required
+/>
+
           <small class="hint">Upload a clear photo of the full invoice.</small>
         </div>
 
@@ -58,3 +65,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
