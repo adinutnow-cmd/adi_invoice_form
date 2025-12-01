@@ -1,50 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin — Submitted Invoices</title>
-
-<style>
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-th, td {
-    border: 1px solid black;
-    padding: 8px;
-}
-.invoice-image {
-    width: 120px;
-}
-.status-pending { color: orange; }
-.status-approved { color: green; }
-.status-rejected { color: red; }
-</style>
-
+  <meta charset="UTF-8" />
+  <title>ADI – Admin Invoices</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<h2>Admin — Submitted Invoices</h2>
+  <div class="page">
+    <div class="card wide">
 
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Created At</th>
-            <th>Full Name</th>
-            <th>Phone</th>
-            <th>Invoice ID</th>
-            <th>Image</th>
-            <th>Status</th>
-        </tr>
-    </thead>
-    <tbody id="invoiceTable"></tbody>
-</table>
+      <h1 class="title">Admin — Submitted Invoices</h1>
 
-<!-- Supabase SDK -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+      <div class="admin-controls">
+        <button id="downloadCsvBtn" class="btn">
+          Download as Excel (CSV)
+        </button>
+        <button id="deleteAllBtn" class="btn danger">
+          Delete All Records
+        </button>
+      </div>
 
-<script src="script.js"></script>
+      <p id="adminStatus" class="status"></p>
+
+      <div class="table-wrapper">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Created At</th>
+              <th>Full Name</th>
+              <th>Phone</th>
+              <th>Invoice ID</th>
+              <th>Image</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="invoiceTableBody">
+            <!-- rows filled by script.js -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
 </body>
 </html>
