@@ -1,30 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice Submission</title>
+  <meta charset="UTF-8" />
+  <title>ADI – Customer Invoice Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <h2>Submit Invoice</h2>
+  <div class="page">
+    <div class="card">
 
-    <form id="invoiceForm">
-        <input type="text" id="full_name" placeholder="Full Name" required><br><br>
-        <input type="text" id="phone" placeholder="Phone Number" required><br><br>
-        <input type="text" id="invoice_id" placeholder="Invoice ID" required><br><br>
-        <input type="file" id="image" accept="image/*" required><br><br>
+      <div class="logo-wrap">
+        <!-- لو عندك لوجو حقيقي بدّل src -->
+        <img src="logo.png" alt="ADI Logo" />
+      </div>
 
-        <button type="submit">Submit</button>
-    </form>
+      <h1 class="title">Customer Invoice Form</h1>
+      <p class="subtitle">
+        Please fill in your details and upload a clear photo of your invoice.
+      </p>
 
-    <p id="result"></p>
+      <form id="invoiceForm" class="form">
+        <div class="form-group">
+          <label for="full_name">Full Name <span>*</span></label>
+          <input type="text" id="full_name" required placeholder="Your full name" />
+        </div>
 
-    <!-- Supabase SDK — THIS IS THE CORRECT ONE -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <div class="form-group">
+          <label for="phone">Phone Number <span>*</span></label>
+          <input type="tel" id="phone" required placeholder="Ex: 70 123 456" />
+        </div>
 
-    <!-- Your Script -->
-    <script src="script.js"></script>
+        <div class="form-group">
+          <label for="invoice_id">Invoice ID <span>*</span></label>
+          <input type="text" id="invoice_id" required placeholder="Ex: 102611" />
+        </div>
 
+        <div class="form-group">
+          <label for="image">Invoice Image <span>*</span></label>
+          <input type="file" id="image" accept="image/*" required />
+          <small class="hint">Upload a clear photo of the full invoice.</small>
+        </div>
+
+        <button type="submit" id="submitBtn" class="btn primary">
+          Submit Invoice
+        </button>
+
+        <p id="status" class="status"></p>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
 </body>
 </html>
